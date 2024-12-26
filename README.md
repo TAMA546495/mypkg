@@ -2,7 +2,7 @@
 ロボットシステム学授業用
 
 # 現在日時表示ノード
- [![test](https://github.com/TAMA546495/robosys2024/actions/workflows/test.yml/badge.svg)](https://github.com/TAMA546495/robosys2024/actions/workflows/test.yml)
+[![test](https://github.com/TAMA546495/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/TAMA546495/mypkg/actions/workflows/test.yml)
 
 ## テスト環境
 - Ubuntu20.4 LTS
