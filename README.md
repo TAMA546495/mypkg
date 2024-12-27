@@ -32,14 +32,21 @@ $ cd ~/ros2_ws/src/mypkg
 $ ros2 run mypkg talker                                        
 [INFO] [1735234199.677088561] [datetime_publisher]: DateTimePublisher開始
 [INFO] [1735234200.665418640] [datetime_publisher]: 送信中: 現在の日時: 2024-12-27 02:30:00
-
 ```
+- 型:String
+
+
+
 - 端末2サブスクライバー
 ```
 $ ros2 run mypkg listener
 [INFO] [1735234470.163040036] [datetime_subscriber]: DateTimeSubscriber開始
 [INFO] [1735234470.350324116] [datetime_subscriber]: 現在の時間帯は「夜」です。
 ```
+- 型:String
+
+
+
 
 ## ライセンス
 - このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
