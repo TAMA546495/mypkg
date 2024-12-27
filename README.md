@@ -17,6 +17,7 @@
 
 - このノードはパブリッシャーから現在の日時を送信し、サブスクライバーで朝昼晩のメッセージを受信するものです。
 - 現在の時刻が知りたいときに便利です。
+- 5時〜11時:朝　11時〜17時:昼　17時〜5時:晩
 
 ## 使用方法
 
@@ -40,8 +41,7 @@ $ ros2 run mypkg talker
 - 端末2サブスクライバー
 ```
 $ ros2 run mypkg listener
-[INFO] [1735234470.163040036] [datetime_subscriber]: DateTimeSubscriber開始
-[INFO] [1735234470.350324116] [datetime_subscriber]: 現在の時間帯は「夜」です。
+[INFO] [1735234470.350324116] [datetime_subscriber]: 現在の時間帯は「晩」です。
 ```
 - 型:String
 
