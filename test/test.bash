@@ -1,44 +1,26 @@
-#!/usr/bin/bash
+#!/bin/bash
 # SPDX-FileCopyrightText: 2024 Yuuki Tamada
 # SPDX-License-Identifier: BSD-3-Clause
 
+# 作業ディレクトリの設定
 dir=~
-[ "$1" != "" ] && dir="$1"
+[ "$1" != "" ] && dir="$1"   # 引数があったら、そちらをホームに変える
 
+# 作業ディレクトリに移動してビルド
 cd $dir/ros2_ws
 colcon build
 source $dir/.bashrc
 
-ng() {
-    echo "NG at Line $1"
-    res=1
-}
+# 10秒間タイムアウトでros2のランチャーを実行
+timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
-res=0
-
-
-{
-  ros2 run mypkg talker > /tmp/talker.log 2>&1
-}&
-
-
-{
-  ros2 run mypkg listener > /tmp/listener.log 2>&1
-}&
-
-
-{
-  sleep 10
-  echo ""
-
-  
-  cat /tmp/listener.log | grep -a '受信した日時: 現在の日時:' || ng ${LINENO}
-  cat /tmp/listener.log | grep -a '現在の時間帯は' || ng ${LINENO}
-}
-echo ""
-
-
-sleep 5
-[ "$res" = 0 ] && echo "OK" || echo "テスト失敗"
-exit $res
+# ログファイルの内容を確認して、必要な出力が含まれているかチェック
+if grep -q "現在の時間帯は" /tmp/mypkg.log; then
+    echo "OK"
+    exit 0
+else
+    echo "テスト失敗: 時間帯メッセージが出力されませんでした。"
+    cat /tmp/mypkg.log  # エラーログを出力
+    exit 1
+fi
 

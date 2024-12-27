@@ -2,8 +2,6 @@
 # SPDX-FileCopyrightText: 2024 Yuuki Tamada
 # SPDX-License-Identifier: BSD-3-Clause
 
-
-
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -20,24 +18,29 @@ class DateTimeSubscriber(Node):
             10
         )
         self.subscription  # 未使用の変数警告を防ぐ
-        self.get_logger().info('DateTimeSubscriber開始')
+        
 
     def listener_callback(self, msg):
-        current_time = datetime.now()
         
-        # 受信した日時を日本語で表示
-        self.get_logger().info(f'受信した日時: {msg.data}')
 
-        # 時間帯を判定
-        hour = current_time.hour
-        if 5 <= hour < 12:
-            time_of_day = '朝'
-        elif 12 <= hour < 18:
-            time_of_day = '昼'
-        else:
-            time_of_day = '夜'
+        # 現在の時刻を解析
+        try:
+            current_time_str = msg.data.split(" ")[2]  # "現在の日時: YYYY-MM-DD HH:MM:SS" から時刻部分を抽出
+            current_time = datetime.strptime(current_time_str, '%H:%M:%S')
+            hour = current_time.hour
 
-        self.get_logger().info(f'現在の時間帯は「{time_of_day}」です。')
+            # 時間帯の判定
+            if 5 <= hour < 11:
+                time_of_day = '朝'
+            elif 11 <= hour < 17:
+                time_of_day = '昼'
+            else:
+                time_of_day = '晩'
+
+            self.get_logger().info(f'現在の時間帯は{time_of_day}です。')
+
+        except Exception as e:
+            self.get_logger().error(f'日時の解析に失敗: {e}')
 
 
 def main():

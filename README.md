@@ -38,7 +38,6 @@ $ ros2 run mypkg talker
 ```
 $ ros2 run mypkg listener
 [INFO] [1735234470.163040036] [datetime_subscriber]: DateTimeSubscriber開始
-[INFO] [1735234470.349724468] [datetime_subscriber]: 受信した日時: 現在の日時: 2024-12-27 02:34:30
 [INFO] [1735234470.350324116] [datetime_subscriber]: 現在の時間帯は「夜」です。
 ```
 
