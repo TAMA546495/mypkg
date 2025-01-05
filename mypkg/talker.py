@@ -19,9 +19,9 @@ class DateTimePublisher(Node):
     def publish_datetime(self):
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         msg = String()
-        msg.data = f'現在の日時: {current_time}'
+        msg.data = f' {current_time}'
         self.publisher_.publish(msg)
-        self.get_logger().info(f'送信中: {msg.data}')
+        self.get_logger().info(f' {msg.data}')
 
 
 def main():

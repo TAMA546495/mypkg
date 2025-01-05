@@ -10,14 +10,14 @@ from datetime import datetime
 
 class DateTimeSubscriber(Node):
     def __init__(self):
-        super().__init__('datetime_subscriber')
+        super().__init__('hantei_subscriber')
         self.subscription = self.create_subscription(
             String,
-            'datetime',
+            'hantei',
             self.listener_callback,
             10
         )
-        self.subscription  # 未使用の変数警告を防ぐ
+        self.subscription  
         
 
     def listener_callback(self, msg):
@@ -37,7 +37,7 @@ class DateTimeSubscriber(Node):
             else:
                 time_of_day = '晩'
 
-            self.get_logger().info(f'現在の時間帯は{time_of_day}です。')
+            self.get_logger().info(f'{time_of_day}です。')
 
         except Exception as e:
             self.get_logger().error(f'日時の解析に失敗: {e}')

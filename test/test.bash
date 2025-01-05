@@ -4,7 +4,7 @@
 
 # 作業ディレクトリの設定
 dir=~
-[ "$1" != "" ] && dir="$1"   # 引数があったら、そちらをホームに変える
+[ "$1" != "" ] && dir="$1"   
 
 # 作業ディレクトリに移動してビルド
 cd $dir/ros2_ws
@@ -15,7 +15,7 @@ source $dir/.bashrc
 timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
 # ログファイルの内容を確認して、必要な出力が含まれているかチェック
-if grep -q "現在の時間帯は" /tmp/mypkg.log; then
+if grep -q "です。" /tmp/mypkg.log; then
     echo "OK"
     exit 0
 else
