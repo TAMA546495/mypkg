@@ -52,7 +52,7 @@ $ ros2 run mypkg listener
 [INFO] [1735234470.350324116] [hantei_subscriber]: 「晩」です。
 ```
 - サブスクライブするトピック
-　'hantei'
+　'datetime'
 - 型:String
 
 

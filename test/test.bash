@@ -1,10 +1,8 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2024 Yuuki Tamada
-# SPDX-License-Identifier: BSD-3-Clause
 
 # 作業ディレクトリの設定
 dir=~
-[ "$1" != "" ] && dir="$1"   
+[ "$1" != "" ] && dir="$1"   # 引数があったら、そちらをホームに変える
 
 # 作業ディレクトリに移動してビルド
 cd $dir/ros2_ws

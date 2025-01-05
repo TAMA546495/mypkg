@@ -14,7 +14,7 @@ class DateTimePublisher(Node):
         super().__init__('datetime_publisher')
         self.publisher_ = self.create_publisher(String, 'datetime', 10)
         self.timer = self.create_timer(timer_period, self.publish_datetime)
-        self.get_logger().info('DateTimePublisher開始')
+        self.get_logger().info('DateTimePublisherノードが開始されました。')
 
     def publish_datetime(self):
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

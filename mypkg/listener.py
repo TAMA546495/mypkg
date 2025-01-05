@@ -10,17 +10,18 @@ from datetime import datetime
 
 class DateTimeSubscriber(Node):
     def __init__(self):
-        super().__init__('hantei_subscriber')
+        super().__init__('datetime_subscriber')
         self.subscription = self.create_subscription(
             String,
-            'hantei',
+            'datetime',
             self.listener_callback,
             10
         )
-        self.subscription  
-        
+        self.subscription  # 未使用の変数警告を防ぐ
+        self.get_logger().info('DateTimeSubscriberノードが開始されました。')
 
     def listener_callback(self, msg):
+        # 受信した日時情報をログに表示
         
 
         # 現在の時刻を解析
@@ -40,7 +41,7 @@ class DateTimeSubscriber(Node):
             self.get_logger().info(f'{time_of_day}です。')
 
         except Exception as e:
-            self.get_logger().error(f'日時の解析に失敗: {e}')
+            self.get_logger().error(f'日時の解析に失敗しました: {e}')
 
 
 def main():
@@ -55,7 +56,7 @@ def main():
         if node is not None:
             node.destroy_node()
         rclpy.shutdown()
-        print("終了")
+        print("ノードがシャットダウンされました。")
 
 
 if __name__ == '__main__':
