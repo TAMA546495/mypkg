@@ -31,7 +31,7 @@ $ cd ~/ros2_ws/src/mypkg
 ```
 
 ## 実行方法
-# datetime_publisher node
+## datetime_publisher node
 ```
 $ ros2 run mypkg talker                                        
 [INFO] [1735234199.677088561] [datetime_publisher]: DateTimePublisher開始
@@ -46,7 +46,7 @@ $ ros2 run mypkg talker
 
 
 
-# hantei_subscriber node
+## hantei_subscriber node
 ```
 $ ros2 run mypkg listener
 [INFO] [1735234470.350324116] [hantei_subscriber]: 「晩」です。
